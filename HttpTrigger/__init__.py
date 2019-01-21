@@ -17,10 +17,9 @@ class App:
                     "headers": [[b"content-type", b"text/plain"]],
                 }
             )
-            await send({"type": "http.response.body", "body": b"Hello, world!"})
+            await send({"type": "http.response.body", "body": b"Hello!"})
 
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
-    response = azure_handler(App, req)
-    return func.HttpResponse(response["body"], status_code=response["status_code"])
+    return azure_handler(App, req)
