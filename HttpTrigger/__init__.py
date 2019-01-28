@@ -1,6 +1,6 @@
 import logging
 import azure.functions as func
-from mangum.platforms.azure.middleware import AzureFunctionMiddleware
+from mangum.platforms.azure.adapter import AzureFunctionAdapter
 
 
 class App:
@@ -22,5 +22,5 @@ class App:
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info("Python HTTP trigger function processed a request.")
-    handler = AzureFunctionMiddleware(App)
+    handler = AzureFunctionAdapter(App)
     return handler(req)
